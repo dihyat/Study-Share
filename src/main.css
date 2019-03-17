@@ -1,3 +1,5 @@
+/** Nav Bar **/
+
 #logo {
   color: antiquewhite;
   font-size: 25px;
@@ -51,13 +53,18 @@
   background-color: #111;
 }
 
+/** Body **/
+
 body {
   background-image: url("./background.png");
+  padding: 0px;
 }
 /*.wrapper {
   text-align: center;
 }*/
 
+
+/*Buttons*/
 .button {
   position: absolute;
   top: 50%;
@@ -119,7 +126,7 @@ body {
     margin: 8px 0;
     border: none;
     cursor: pointer;
-    width: 100%;
+    width: 410px;
     opacity: 0.9;
   }
   
@@ -127,54 +134,32 @@ body {
     opacity:1;
   }
   
-  /* Extra styles for the cancel button */
-  #cancelbtn {
-    padding: 14px 20px;
-    background-color: #f44336;
-  }
-  
-  /* Float cancel and signup buttons and add an equal width */
-  #cancelbtn, #signupbtn {
-    float: left;
-    width: 50%;
-  }
-  
   /* Add padding to container elements */
   .container {
+    float: left;
     padding: 16px;
     background-color: white;
   }
-  
-  /* Clear floats */
-  .clearfix::after {
-    content: "";
-    clear: both;
-    display: table;
-  }
-  
-  /* Change styles for cancel button and signup button on extra small screens */
-  @media screen and (max-width: 300px) {
-    #cancelbtn, #signupbtn {
-       width: 100%;
-    }
-  }
-
-  
-.formbody{
-    font-family: Arial, Helvetica, sans-serif;
- box-sizing: border-box;
- width: 60%;
- 
- margin-top: 80px; 
-}
 
 .logbody{
-    width: 40%;
-    float: right;
-    font-family: Arial, Helvetica, sans-serif;
- box-sizing: border-box;
- margin-top: -549px; 
+  width: 40%;
+  height: 100%;
+  float: left;
+  font-family: Arial, Helvetica, sans-serif;
+  box-sizing: border-box;
+  /*margin-top: -549px; */
+  background-color: white;
+  padding-bottom: 16px;
 }
+
+/* Form body */
+
+
+.formbody{
+  box-sizing: border-box;
+  width: 100%;
+  padding: 20px;
+ }
 
 span.psw {
   float: right;
@@ -184,6 +169,20 @@ span.psw {
 .logcontainer{
   padding: 20px;
   padding-bottom: 60px;
-    background-color: white;
+  background-color: white;
+}
+
+.FormTable{
+  background-color: rgba(255,255,255,0.96);
+  padding: 20px;
+}
+
+.FormDiv{
+  padding-top: 106px;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.TextBoxPart{
+  height: 589px;
 }
 

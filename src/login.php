@@ -1,4 +1,46 @@
-<!DOCTYPE html>
+<?php
+include 'Guest.php';
+
+if(isset($_POST['loginSubmit']))
+{
+  guestLogin();
+} 
+
+if(isset($_POST['signupbtn']))
+{
+  guestRegister();
+}
+
+function guestLogin(){
+  $userName = $_POST['uname'];
+  $password = $_POST['psw'];
+
+  $guestObj = new Guest;
+  $guestObj->login($userName,$password);
+  
+}
+
+function guestRegister(){
+  $email = $_POST['email'];
+  $userName = $_POST['username'];
+  $password = $_POST['psw'];
+  $fname = $_POST['fname'];
+  $sname = $_POST['sname'];
+  $name = $fname . " " . $sname;
+
+
+  $guestObj = new Guest;
+  $guestObj->register($email,$userName,$name,$password);
+}
+
+function console_log( $data ){
+  echo '<script>';
+  echo 'console.log('. json_encode( $data ) .')';
+  echo '</script>';
+}
+
+
+echo '<!DOCTYPE html>
 <html class="no-js">
   <!--<![endif]-->
   <head>
@@ -41,7 +83,7 @@
               
               <td valign="top">
                 <hr></hr>
-                <form action="login.php" style="border-right:1px solid #ccc;" class="formbody"  method =“post”>
+                <form action="login.php" class="formbody"  method ="post">
                   <table>
                     <tr><td valign="top" class="TextBoxPart">
                       <p>
@@ -53,7 +95,15 @@
                         <label for="username"><b>Username</b></label>
                       </p>
                         <input type="text" placeholder="Enter username" name="username" required>
-                    
+                        <p>
+                        <label for="username"><b>Firstname</b></label>
+                    </p>
+                    <input type="text" placeholder="Enter firstname" name="fname" required>
+
+                    <p>
+                        <label for="username"><b>Surename</b></label>
+                    </p>
+                        <input type="text" placeholder="Enter surename" name="sname" required>
                       <p>
                         <label for="psw"><b>Password</b></label>
                       </p>
@@ -71,7 +121,7 @@
                       </td></tr>
 
                     <tr><td valign="bottom">
-                      <button class="btn" type="submit" id="signupbtn">Sign Up</button>
+                      <button class="btn" type="submit" name="signupbtn">Sign Up</button>
                     </td></tr>
 
                     </table>
@@ -80,7 +130,7 @@
 
               <td valign="top">
                 <hr></hr>
-                  <form action="register.php" class="formbody"  method =“post”>
+                  <form action="login.php" class="formbody"  method ="post">
                     <table>
                       <tr><td valign="top" class="TextBoxPart" style="padding-left: 20px;">
                         <p>
@@ -98,7 +148,7 @@
                       </td></tr>
 
                     <tr><td valign="bottom">
-                      <button  class="btn" type="submit">Login</button>
+                      <button class="btn" type="submit" name="loginSubmit">Login</button>
                     </td></tr>
                   </table>
 
@@ -123,5 +173,8 @@
         </div>
       </center>
     </body>
+
   </body>
 </html>
+';
+?>
