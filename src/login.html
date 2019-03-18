@@ -45,7 +45,7 @@
               
               <td valign="top">
                 <hr></hr>
-                <form action="http://localhost:8080/MySite/register.php" method =“post” style="border-right:1px solid #ccc;" class="formbody" >
+                <form action="http://localhost:8080/MySite/register.php" method ="post" style="border-right:1px solid #ccc;" class="formbody" >
                   <table>
                     <tr><td valign="top" class="TextBoxPart">
                       <p>
@@ -54,27 +54,35 @@
                       <input type="text" placeholder="Enter Email" name="email" required>
 
                       <p>
-                        <label for="username"><b>Username</b></label>
+                        <label><b>User type</b></label>
+                      </p>
+                      <select class="Dropdown" name="userType" placeholder="Student" required>
+                        <option value="Student">Student</option>
+                        <option value="Teacher">Teacher</option>
+                      </select>
+
+                      <p>
+                        <label><b>Username</b></label>
                       </p>
                       <input type="text" placeholder="Enter username" name="username" required>
 
                       <p>
-                          <label for="username"><b>Firstname</b></label>
+                          <label><b>Firstname</b></label>
                       </p>
                       <input type="text" placeholder="Enter firstname" name="fname" required>
 
                       <p>
-                          <label for="username"><b>Surename</b></label>
+                          <label><b>Surename</b></label>
                       </p>
                       <input type="text" placeholder="Enter surename" name="sname" required>
                     
                       <p>
-                        <label for="psw"><b>Password</b></label>
+                        <label><b>Password</b></label>
                       </p>
                       <input type="password" placeholder="Enter Password" name="psw" required>
                     
                       <p>
-                        <label for="psw-repeat"><b>Repeat Password</b></label>
+                        <label><b>Repeat Password</b></label>
                       </p>
                       <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
                         
@@ -93,18 +101,18 @@
 
               <td valign="top">
                 <hr></hr>
-                  <form action="http://localhost:8080/MySite/register.php" class="formbody"  method =“post”>
+                  <form action="http://localhost:8080/MySite/register.php" class="formbody"  method ="post">
                     <table>
                       <tr><td valign="top" class="TextBoxPart" style="padding-left: 20px;">
                         <p>
-                          <label for="uname"><b>Username</b></label>
+                          <label><b>Username</b></label>
                         </p>
-                        <input type="text" placeholder="Enter Username" name="uname" required>
+                        <input type="text" placeholder="Enter Username" name="loginUsername" required>
                         
                         <p>
-                          <label for="psw"><b>Password</b></label>
+                          <label><b>Password</b></label>
                         </p>
-                        <input type="password" placeholder="Enter Password" name="psw" required>
+                        <input type="loginPassword" placeholder="Enter Password" name="psw" required>
                         <span class="psw"> <a href="#">Forgot password?</a></span>
                         <br/>
                         <input type="checkbox" checked="checked" name="remember"> Remember me
