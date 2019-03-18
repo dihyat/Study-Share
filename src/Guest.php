@@ -1,14 +1,17 @@
 <?php 
 include 'DataInterface.php';
+
 class Guest {
     public function register($email, $username, $password, $firstname, $surename, $userType) {
         $dataInterfaceObj = DataInterface::getInstance();
+        $con = $dataInterfaceObj->getConnection();
         if($dataInterfaceObj->storeNewUser($email,$username,$password,$firstname,$surename,$userType)) {
             return TRUE;
         }  
         else {
             return FALSE;
         }
+    mysqli_close($con);
     }
     
     public function login($userName, $password) {

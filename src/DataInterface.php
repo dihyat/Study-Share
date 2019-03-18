@@ -12,7 +12,7 @@
         private function __construct(){
             $this->conn = mysqli_connect($this->servername, $this->dbuser, $this->dbpassword, $this->dbname);
             if (mysqli_connect_errno()){
-                console_log("Failed to connect to MySQL: " . mysqli_connect_error());
+                $this->console_log("Failed to connect to MySQL: " . mysqli_connect_error());
                 die("DB Error: please try again later"); 
             }
         }
@@ -25,7 +25,7 @@
         }
         
         public function searchUser($userName, $password){
-            $sql = makeQuery($this->conn, "SELECT * FROM UserData");
+            $sql = $this->makeQuery($this->conn, "SELECT * FROM UserData");
             while($rows = mysqli_fetch_array($sql)) {
                 if($userName == $rows["username"]){
                     if($password == $rows["password"]){
@@ -46,46 +46,53 @@
 
         public function storeNewUser($email,$username,$password,$firstname,$surename,$userType){
             //$isAdmin = 1;
-            $sqlCheckUser = makeQuery($this->conn, "SELECT * FROM UserData");
-            $userExists = false;
-            while($rows = mysqli_fetch_array($sqlCheckUser)) {
-                if($userName == $rows["userName"]){
-                    $userExists = true;
-                }
-            }
+            $sqlCheckUser = $this->makeQuery($this->conn, "SELECT * FROM UserData");
+            if ($sqlCheckUser != NULL) {
 
-            if($userExists == true){
-                console_log("user Exists");
-                return false;
+                $userExists = false;
+                while($rows = mysqli_fetch_array($sqlCheckUser)) {
+                    if($userName == $rows["userName"]){
+                        $userExists = true;
+                    }
+                }
+
+                if($userExists == true){
+                    $this->console_log("user Exists");
+                    return false;
+                }
             }
 
             $sql = 'INSERT INTO UserData VALUES (' .
             strval($email) .',' .
-            strval($userName) . ',' .
+            strval($username) . ',' .
             strval($password) . ',' .
             strval($firstname) . ',' .
             strval($surename) . ',' .
             strval($userType) .
             ');';
-            makeQuery($this->conn,$sql);
+            $this->makeQuery($this->conn,$sql);
             return true;
         }
 
         //Extra function
         public function makeQuery($connection, $Query){
             if(mysqli_query($connection, $Query)) {
-                console_log("User Created");
+                $this->console_log("User Created");
             } 
             else {
-                console_log("Error creating Entry: " . mysqli_error($con) );
+                $this->console_log("Error creating Entry");
             }
         }
 
-        function console_log($data) {
+        public function console_log($data) {
             echo '<script>';
             echo 'console.log('. json_encode( $data ) .')';
             echo '</script>';
         } 
+
+        public function getConnection() {
+            return $this->$conn;
+        }
 
     }//end class
 ?>	

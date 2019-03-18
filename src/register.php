@@ -1,5 +1,5 @@
 <?php
-    include 'Guest.php'
+    include 'Guest.php';
     
     $email = $_POST['email'];
     $username = $_POST['username'];
@@ -10,8 +10,6 @@
 
     $guestObj = new Guest;
     $guestObj->register($email, $username, $password, $firstname, $surename, $userType);
-
-    mysqli_close($con);
 
     /*
      echo $_POST['email'];
