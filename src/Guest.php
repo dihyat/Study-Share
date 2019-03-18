@@ -11,6 +11,7 @@ class Guest {
         else {
             return FALSE;
         }
+
     mysqli_close($con);
     }
     

@@ -8,8 +8,10 @@
         password VARCHAR(50) NOT NULL,
         firstname VARCHAR(50) NOT NULL,
         surename VARCHAR(50) NOT NULL,
-        userType ENUM('Admin', 'Teacher', 'Student') NOT NULL 
+        userType VARCHAR(50) NOT NULL
         )";
+
+        //userType ENUM('Admin', 'Teacher', 'Student') NOT NULL 
         
     //Messages for if it does/doesn't exist
     if (mysqli_query($con, $sql)) {

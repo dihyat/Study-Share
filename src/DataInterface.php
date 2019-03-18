@@ -7,13 +7,12 @@
         private $dbpassword = "";
         private $dbname = "studysharedb1";
 
-        private $conn;
+        private $conn = NULL;
         
         private function __construct(){
-            $this->conn = mysqli_connect($this->servername, $this->dbuser, $this->dbpassword, $this->dbname);
+            $this->conn = mysqli_connect($this->servername, $this->dbuser, $this->dbpassword, $this->dbname) or  die("DB Error: please try again later");
             if (mysqli_connect_errno()){
                 $this->console_log("Failed to connect to MySQL: " . mysqli_connect_error());
-                die("DB Error: please try again later"); 
             }
         }
 
@@ -48,7 +47,6 @@
             //$isAdmin = 1;
             $sqlCheckUser = $this->makeQuery($this->conn, "SELECT * FROM UserData");
             if ($sqlCheckUser != NULL) {
-
                 $userExists = false;
                 while($rows = mysqli_fetch_array($sqlCheckUser)) {
                     if($userName == $rows["userName"]){
@@ -70,6 +68,7 @@
             strval($surename) . ',' .
             strval($userType) .
             ');';
+
             $this->makeQuery($this->conn,$sql);
             return true;
         }
@@ -81,6 +80,7 @@
             } 
             else {
                 $this->console_log("Error creating Entry");
+                echo mysqli_error($connection);
             }
         }
 
@@ -91,7 +91,7 @@
         } 
 
         public function getConnection() {
-            return $this->$conn;
+            return $this->conn;
         }
 
     }//end class
