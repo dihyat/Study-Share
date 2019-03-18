@@ -160,6 +160,12 @@ body {
   padding-bottom: 16px;
 }
 
+a{
+  text-decoration: none;
+  color: white;
+  text-align: center;
+}
+
 /* Form body */
 
 
@@ -193,4 +199,75 @@ span.psw {
 .TextBoxPart{
   height: 290px;
 }
+
+
+/* css for a level page */
+.edutitle{
+  color: white;
+  background-image: -webkit-linear-gradient(135deg, #13547a, #80d0c7);
+  font-size: 50px;
+  margin-top: 10%;
+  border-radius: 10px;
+  width: 40%;
+  margin-left: 28%;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  
+}
+
+.edutitle p{
+  text-align: center;
+}
+
+.subBody{
+  background-image: -webkit-linear-gradient(135deg, #13547a, #13546a);
+  width:60%;
+ 
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 40px;
+  text-align: center;
+  border-radius: 10px; 
+
+  
+}
+
+
+/* CSS FOR CARD */
+
+.card {
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  transition: 0.3s;
+  width: 5%;
+  border-radius: 5px;
+  background-image: -webkit-linear-gradient(135deg, #13547a, #80d0c7);
+  font-size: 40px;
+  padding: 0%;
+  text-align: center;
+  color: white;
+  
+  
+
+}
+
+.space{
+  border-spacing: 90px;
+}
+
+
+
+.card:hover {
+  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  background-image: -webkit-linear-gradient(5deg, #13540a, #13540a);
+}
+
+
+
+.cardcontainer {
+  text-align: center;
+  
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
 
