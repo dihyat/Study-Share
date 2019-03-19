@@ -245,6 +245,7 @@ span.psw {
   padding: 0%;
   text-align: center;
   color: white;
+  position: relative;
   
   
 
@@ -258,7 +259,7 @@ span.psw {
 
 .card:hover {
   box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  background-image: -webkit-linear-gradient(5deg, #13540a, #13540a);
+  background-image: -webkit-linear-gradient(5deg, #591574, #db3907);
 }
 
 
