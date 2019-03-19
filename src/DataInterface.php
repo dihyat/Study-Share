@@ -94,5 +94,5 @@
             return $this->conn;
         }
 
-    }//end class
+    }
 ?>	
