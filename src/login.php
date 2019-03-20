@@ -1,3 +1,4 @@
+
 <?php
 include 'Guest.php';
 
@@ -17,14 +18,18 @@ function guestLogin(){
 
   $guestObj = new Guest;
   $acountExists = $guestObj->login($userName,$password);
+  console_log($acountExists);
   if($acountExists == true){
-    console_log($accountExists);
     session_start();
     $_SESSION['userName'] = $userName;
     $_SESSION['logged_in'] = true;
 
     header("location: index.php");
-
+  }
+  else{
+    echo'<script>
+        alert("Incorrect username/password");
+        </script>';
   }
 }
 
@@ -47,7 +52,6 @@ function console_log( $data ){
   echo '</script>';
 }
 
-
 echo '<!DOCTYPE html>
 <html class="no-js">
   <!--<![endif]-->
@@ -65,7 +69,7 @@ echo '<!DOCTYPE html>
     <div class="navbar">
       <ul>
         <li id="logo">Study Share</li>
-        <li><a href="./index.html">Home</a></li>
+        <li><a href="./index.php">Home</a></li>
       </ul>
     </div>
 
@@ -98,7 +102,7 @@ echo '<!DOCTYPE html>
                         <label for="email"><b>Email</b></label>
                       </p>
                         <input type="text" placeholder="Enter Email" name="email" required>
-
+                  
                       <p>
                         <label for="username"><b>Username</b></label>
                       </p>
@@ -107,7 +111,7 @@ echo '<!DOCTYPE html>
                         <label for="username"><b>Firstname</b></label>
                     </p>
                     <input type="text" placeholder="Enter firstname" name="fname" required>
-
+                  
                     <p>
                         <label for="username"><b>Surename</b></label>
                     </p>
@@ -141,6 +145,7 @@ echo '<!DOCTYPE html>
                   <form action="login.php" class="formbody"  method ="post">
                     <table>
                       <tr><td valign="top" class="TextBoxPart" style="padding-left: 20px;">
+                      <p style="color:red;" id="error"></div>
                         <p>
                           <label for="uname"><b>Username</b></label>
                         </p>
@@ -185,4 +190,5 @@ echo '<!DOCTYPE html>
   </body>
 </html>
 ';
+
 ?>

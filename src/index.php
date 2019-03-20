@@ -6,20 +6,20 @@ console_log($_SESSION);
 $loginbtn;
 $registeredUserObj;
 if($_SESSION['logged_in'] == true){
-  $loginbtn = '<li style="float:right"><button name="logout">Logout</button></li>';
+  $loginbtn = '<li style="float:right"><button class="btn" name="logout">Logout</button></li>';
   $registeredUserObj = new RegisteredUser;
   $registeredUserObj->setUserName($_SESSION['userName']);
   $_SESSION['registeredUser'] = $registeredUserObj;
 }
 else{
-  $loginbtn = '<li style="float:right"><button name="login">Login/SignUp</button></li>'; //if not logged in
+  $loginbtn = '<li style="float:right"><button class="btn" name="login">Login/SignUp</button></li>'; //if not logged in
 }
 
 if(isset($_POST['logout'])){
   $_SESSION['logged_in'] = false;
   $_SESSION['userName'] = false;
   $_SESSION['registeredUser'] = false;
-  $loginbtn = '<li style="float:right"><button name="login">Login/SignUp</button></li>';
+  $loginbtn = '<li style="float:right"><button class="btn" name="login">Login/SignUp</button></li>';
 }
 
 if(isset($_POST['login'])){

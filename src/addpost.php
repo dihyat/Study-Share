@@ -1,8 +1,7 @@
 <?php
 include 'RegisteredUser.php';
-
 session_start();
-if($SESSION['logged_in'] == false){
+if($_SESSION['logged_in'] == false){
   echo '<script language="javascript">';
   echo 'alert("Before you can upload notes, you need to login!");';
   echo "window.location.replace('login.php')";
