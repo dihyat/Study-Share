@@ -62,16 +62,20 @@
                 }
             }
 
-            $sql = 'INSERT INTO userdata(email,username,password,firstname,surename,userType) VALUES (' .
-            strval($email) .',' .
-            strval($username) . ',' .
-            strval($password) . ',' .
-            strval($firstname) . ',' .
-            strval($surename) . ',' .
-            strval($userType) .
-            ');';
-            $this->makeQuery($this->conn,$sql);
+            $sql =  mysqli_query($this->conn,"INSERT INTO userdata (email,username,password,firstname,surename,userType) VALUES ($email,$username, $password, $firstname, $surename, $userType)"); //.
+            //strval($email) .',' .
+            //strval($username) . ',' .
+            //strval($password) . ',' .
+            //strval($firstname) . ',' .
+            //strval($surename) . ',' .
+            //strval($userType) .
+            //");";
+            //$this->makeQuery($this->conn,$sql);
             return true;
+
+
+
+            //$sql = mysqli_query($this->conn,"INSERT INTO Accounts (userName,password,name,email,isAdmin) VALUES ('$userName','$password','$name','$email','$isAdmin')");
         }
 
         //Extra function
