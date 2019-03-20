@@ -18,7 +18,7 @@ class Guest {
         $dataInterfaceObj = DataInterface::getInstance();
     
         //Checks if account exists, true or false
-        console_log($dataInterfaceObj->searchUser($userName,$password));
+        $LoginResults = $dataInterfaceObj->searchUser($userName,$password);
         
         //Implement later
         if(true) {

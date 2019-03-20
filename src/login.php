@@ -2,13 +2,13 @@
     include 'Guest.php';
 
     $guestObj = new Guest;
-    $username = $_POST['username'];
-    $password = $_POST['psw'];
+    $username = $_POST['loginUsername'];
+    $password = $_POST['loginPassword'];
 
-    if($guestObj->login($userName, $password)) {
-        //redirect if true
-        return;
+    if($guestObj->login($username, $password)) {
+        header("Location: ./index.html");
+    }
+    else {
+        
     }
 ?>
-
-<!--Else new HTML page with error message!-->

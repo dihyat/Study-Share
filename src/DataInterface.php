@@ -32,16 +32,17 @@
                         return true;
                     }
                     else {
-                        //Password wrong, user found
+                        $this->console_log("User found, HOWEVER, password wrong");
                         return false;
                     }
                 }
                 else {
-                    //UserName doesn't exist
+                    $this->console_log("User Username doesn't exist");
                     return false;
                 }
             }   
-            return false;
+            $this->console_log("Logged in!");
+            return true;
         }
 
         public function storeNewUser($email,$username,$password,$firstname,$surename,$userType){
