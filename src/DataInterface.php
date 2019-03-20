@@ -62,7 +62,7 @@
                 }
             }
 
-            $sql = 'INSERT INTO userdata VALUES (' .
+            $sql = 'INSERT INTO userdata(email,username,password,firstname,surename,userType) VALUES (' .
             strval($email) .',' .
             strval($username) . ',' .
             strval($password) . ',' .
