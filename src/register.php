@@ -9,7 +9,10 @@
     $userType = $_POST['userType'];
 
     $guestObj = new Guest;
-    $guestObj->register($email, $username, $password, $firstname, $surename, $userType);
+    $RegResults = $guestObj->register($email, $username, $password, $firstname, $surename, $userType);
+    if ($RegResults == False) {
+        echo "User Exists";
+    }
 
     /*
      echo $_POST['email'];

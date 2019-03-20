@@ -1,8 +1,8 @@
 <?php
     include 'DBConnect.php';
 
-    //Creates UserData table
-    $sql = "CREATE TABLE UserData (
+    //Creates Accounts table
+    $sql = "CREATE TABLE Accounts (
         email VARCHAR(50) NOT NULL,
         username VARCHAR(50) NOT NULL PRIMARY KEY,
         password VARCHAR(50) NOT NULL,
@@ -13,7 +13,7 @@
         
     //Messages for if it does/doesn't exist
     if (mysqli_query($con, $sql)) {
-        echo "<br/>Table 'UserData' created successfully <br/>";
+        echo "<br/>Table 'Accounts' created successfully <br/>";
     } 
     else {
         echo "<br/> Error creating table: " . mysqli_error($con) . "<br/>";

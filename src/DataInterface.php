@@ -25,7 +25,7 @@
         }
         
         public function searchUser($userName, $password){
-            $sql = $this->makeQuery($this->conn, "SELECT * FROM Userdata");
+            $sql = $this->makeQuery($this->conn, "SELECT * FROM Accounts");
             while($rows = mysqli_fetch_array($sql)) {
                 if($userName == $rows["username"]){
                     if($password == $rows["password"]){
@@ -45,47 +45,42 @@
         }
 
         public function storeNewUser($email,$username,$password,$firstname,$surename,$userType){
-            //$isAdmin = 1;
-            $sqlCheckUser = $this->makeQuery($this->conn, "SELECT * FROM userdata");
+            $sqlCheckUser = $this->makeQuery($this->conn, "SELECT * FROM Accounts;");
             if ($sqlCheckUser != NULL) {
-
                 $userExists = false;
                 while($rows = mysqli_fetch_array($sqlCheckUser)) {
-                    if($userName == $rows["userName"]){
+                    if($username == $rows["username"]){
                         $userExists = true;
                     }
                 }
 
                 if($userExists == true){
-                    $this->console_log("user Exists");
+                    $this->console_log("User Exists");
                     return false;
                 }
             }
+            else {
+                $this->console_log("SQLCheckerFailed!");
+                die("Error checking for useranme matches");
+            }
 
-            $sql =  mysqli_query($this->conn,"INSERT INTO userdata (email,username,password,firstname,surename,userType) VALUES ($email,$username, $password, $firstname, $surename, $userType)"); //.
-            //strval($email) .',' .
-            //strval($username) . ',' .
-            //strval($password) . ',' .
-            //strval($firstname) . ',' .
-            //strval($surename) . ',' .
-            //strval($userType) .
-            //");";
-            //$this->makeQuery($this->conn,$sql);
+            $sql =  "INSERT INTO Accounts (email,username,password,firstname,surename,userType) 
+                    VALUES ('$email','$username', '$password', '$firstname', '$surename', '$userType');";
+            $this->makeQuery($this->conn,$sql);
             return true;
-
-
-
-            //$sql = mysqli_query($this->conn,"INSERT INTO Accounts (userName,password,name,email,isAdmin) VALUES ('$userName','$password','$name','$email','$isAdmin')");
         }
 
         //Extra function
         public function makeQuery($connection, $Query){
-            if(mysqli_query($connection, $Query)) {
-                $this->console_log("User Created");
-            } 
-            else {
+            $Q = mysqli_query($connection, $Query);
+            if($Q == False) {
                 $this->console_log("Error creating Entry");
                 echo mysqli_error($this->conn);
+                return Null;
+            } 
+            else {
+                $this->console_log("Query was a success!"); 
+                return $Q;   
             }
         }
 

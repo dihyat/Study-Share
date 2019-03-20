@@ -1,7 +1,7 @@
 <?php
     include 'DBConnect.php';
 
-    $sql = "DROP TABLE UserData";
+    $sql = "DROP TABLE Accounts";
 
     if (mysqli_query($con, $sql)) {
         echo "<br/> Record deleted successfully <br/> ";
