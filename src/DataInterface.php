@@ -25,7 +25,7 @@
         }
         
         public function searchUser($userName, $password){
-            $sql = $this->makeQuery($this->conn, "SELECT * FROM UserData");
+            $sql = $this->makeQuery($this->conn, "SELECT * FROM Userdata");
             while($rows = mysqli_fetch_array($sql)) {
                 if($userName == $rows["username"]){
                     if($password == $rows["password"]){
@@ -46,7 +46,7 @@
 
         public function storeNewUser($email,$username,$password,$firstname,$surename,$userType){
             //$isAdmin = 1;
-            $sqlCheckUser = $this->makeQuery($this->conn, "SELECT * FROM UserData");
+            $sqlCheckUser = $this->makeQuery($this->conn, "SELECT * FROM userdata");
             if ($sqlCheckUser != NULL) {
 
                 $userExists = false;
@@ -62,7 +62,7 @@
                 }
             }
 
-            $sql = 'INSERT INTO UserData VALUES (' .
+            $sql = 'INSERT INTO userdata VALUES (' .
             strval($email) .',' .
             strval($username) . ',' .
             strval($password) . ',' .
@@ -81,6 +81,7 @@
             } 
             else {
                 $this->console_log("Error creating Entry");
+                echo mysqli_error($this->conn);
             }
         }
 
@@ -91,7 +92,7 @@
         } 
 
         public function getConnection() {
-            return $this->$conn;
+            return $this->conn;
         }
 
     }//end class
