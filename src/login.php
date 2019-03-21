@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include 'Guest.php';
 
     $guestObj = new Guest;
@@ -9,6 +10,7 @@
         header("Location: ./index.html");
     }
     else {
-        
+        header("Location: ./index.html?login=error!");
+        exit();
     }
 ?>

@@ -24,11 +24,19 @@
             return self::$DInstance;
         }
         
-        public function searchUser($userName, $password){
-            $sql = $this->makeQuery($this->conn, "SELECT * FROM Accounts");
-            while($rows = mysqli_fetch_array($sql)) {
-                if($userName == $rows["username"]){
-                    if($password == $rows["password"]){
+        public function searchUser($username, $password){
+            $sql = $this->makeQuery($this->conn, "SELECT * FROM Accounts WHERE username = '$username'");
+            $row = mysqli_num_rows($sql);
+            if($row == 1) {
+                //$row = mysqli_fetch_array($sql);
+                if($username == $row["username"]){
+                    if($password == $row["password"]){
+                        $this->console_log("Logged in!");
+                        $_SESSION['username'] = $username;
+                        $_SESSION['userType'] = $username;
+                        $_SESSION['firstname'] = $firstname;
+                        $_SESSION['lastname'] = $surename;
+                        $_SESSION['email'] = $email;
                         return true;
                     }
                     else {
@@ -41,8 +49,11 @@
                     return false;
                 }
             }   
-            $this->console_log("Logged in!");
-            return true;
+            else {
+                //Should neve happen, but for debuging purposes
+                $this->console_log("Error - there is more than one user with that username");
+            }
+            return;
         }
 
         public function storeNewUser($email,$username,$password,$firstname,$surename,$userType){
