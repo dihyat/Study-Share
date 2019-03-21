@@ -42,10 +42,17 @@
                     echo "ErrorSection.innerHTML += 'Error: The fields were filled in incorrectly';";
                     break;
             }
-            echo "document.getElementById('email').text = "
+            echo "document.getElementById('email').text = '$email';
+                document.getElementById('username').text = '$username';
+                document.getElementById('fname').text = '$firstname';
+                document.getElementById('sname').text = '$surename';
+                document.getElementById('psd').text = '$password';
+                document.getElementById('psw-repeat').text = '$rePassword';";
+                
+        
         echo "</script>";
         }
-        else{
+        else {
             header("Location: ./index.html");
         }
     }
