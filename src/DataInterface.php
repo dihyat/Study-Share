@@ -54,29 +54,29 @@
         public function storeNewUser($email, $username, $password, $firstname, $surename, $userType, $rePassword){
             if(empty($firstname) || empty($surename) || empty($email) || empty($username) || empty($password) || empty($rePassword)){
                 $this->console_log("Feilds left empty!");
-                return false;
+                return 1;
             }
 
             if((strpos($email, '@') || strpos($email, '.') || filter_var($email, FILTER_VALIDATE_EMAIL)) == false){
                 $this->console_log("Email invalid");
-                return false;
+                return 2;
             }
 
-            if(($password.length > 8) || (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $password)) == false){
+            if((strlen($password) > 8) || (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-].*[0-9]|[0-9]/', $password)) == false){
                 $this->console_log("password invalid");
-                return false;
+                return 3;
             }
 
             if($password != $rePassword){
                 $this->console_log("passwords don't match");
-                return false;
+                return 4;
             }
 
             $sqlCheckUser = $this->makeQuery($this->conn, "SELECT * FROM Accounts;");
             if ($sqlCheckUser != NULL) {
 
                 $userExists = false;
-                while($rows = mysqli_fetch_rows($sqlCheckUser)) {
+                while($rows = mysqli_fetch_row($sqlCheckUser)) {
                     if($username == $rows["username"]){
                         $userExists = true;
                     }
@@ -84,17 +84,17 @@
 
                 if($userExists == true){
                     $this->console_log("User Exists");
-                    return false;
+                    return 5;
                 }
             }
             else {
                 $this->console_log("SQLCheckerFailed!");
-                die("Error checking for useranme matches");
+                return 6;
             } 
             $sql =  "INSERT INTO Accounts (email,username,password,firstname,surename,userType) 
                     VALUES ('$email','$username', '$password', '$firstname', '$surename', '$userType');";
             $this->makeQuery($this->conn,$sql);
-            return true;
+            return 0;
         }
 
         //Extra function

@@ -194,3 +194,8 @@ span.psw {
   height: 290px;
 }
 
+#loginError, #RegisterError {
+  word-wrap: break-word;
+}
+
+

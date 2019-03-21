@@ -11,11 +11,12 @@
         if($guestObj->login($username, $password)) {
             header("Location: ./index.php");
         }
-        else {
-            header("Location: ./index.html?login=error!");
-            exit();
-        }
     }
 
     include_once 'login.html';
+    echo "<script>
+        var ErrorSection = document.getElementById('loginError');
+        ErrorSection.innerHTML += 'Error: Incorrect username/password inputed';
+        ErrorSection.style.color = 'red';
+    </script>";
 ?>
