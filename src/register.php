@@ -12,6 +12,7 @@
 
         $guestObj = new Guest;
         $RegResults = $guestObj->register($email, $username, $password, $firstname, $surename, $userType, $rePassword);
+       $
         echo $RegResults;
         if ($RegResults != 0) {
             include_once 'login.html';
@@ -41,8 +42,11 @@
                     echo "ErrorSection.innerHTML += 'Error: The fields were filled in incorrectly';";
                     break;
             }
-        
+            echo "document.getElementById('email').text = "
         echo "</script>";
+        }
+        else{
+            header("Location: ./index.html");
         }
     }
 

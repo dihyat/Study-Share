@@ -76,7 +76,7 @@
             if ($sqlCheckUser != NULL) {
 
                 $userExists = false;
-                while($rows = mysqli_fetch_row($sqlCheckUser)) {
+                while($rows = mysqli_fetch_array($sqlCheckUser)) {
                     if($username == $rows["username"]){
                         $userExists = true;
                     }
