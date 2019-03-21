@@ -7,9 +7,10 @@
     $firstname = $_POST['fname'];
     $surename = $_POST['sname'];
     $userType = $_POST['userType'];
+    $rePassword = $_POST['psw-repeat'];
 
     $guestObj = new Guest;
-    $RegResults = $guestObj->register($email, $username, $password, $firstname, $surename, $userType);
+    $RegResults = $guestObj->register($email, $username, $password, $firstname, $surename, $userType, $rePassword);
     if ($RegResults == False) {
         echo "User Exists";
     }

@@ -25,42 +25,58 @@
         }
         
         public function searchUser($username, $password){
-            $sql = $this->makeQuery($this->conn, "SELECT * FROM Accounts WHERE username = '$username'");
-            $row = mysqli_num_rows($sql);
-            if($row == 1) {
-                //$row = mysqli_fetch_array($sql);
-                if($username == $row["username"]){
-                    if($password == $row["password"]){
-                        $this->console_log("Logged in!");
-                        $_SESSION['username'] = $username;
-                        $_SESSION['userType'] = $username;
-                        $_SESSION['firstname'] = $firstname;
-                        $_SESSION['lastname'] = $surename;
-                        $_SESSION['email'] = $email;
-                        return true;
-                    }
-                    else {
-                        $this->console_log("User found, HOWEVER, password wrong");
-                        return false;
-                    }
+            $Query = $this->makeQuery($this->conn, "SELECT * FROM Accounts WHERE username = '$username'");
+            $CheckQuery = mysqli_num_rows($Query);
+            if($CheckQuery == 1) {
+                $row = mysqli_fetch_assoc($Query);
+                if($password == $row["password"]){
+                    $this->console_log("Logged in!");
+                    $_SESSION['username'] = $username;
+                    $_SESSION['userType'] = parse_str($row["userType"]);
+                    $_SESSION['firstname'] = $row["firstname"];
+                    $_SESSION['lastname'] = $row["surename"];
+                    $_SESSION['email'] = $row["email"];
+                    $_SESSION['loggedin'] = true;
+                    return true;
                 }
                 else {
-                    $this->console_log("User Username doesn't exist");
+                    echo parse_str($row['username']);
+                    $this->console_log("User found, HOWEVER, password wrong");
                     return false;
                 }
-            }   
-            else {
-                //Should neve happen, but for debuging purposes
-                $this->console_log("Error - there is more than one user with that username");
             }
-            return;
-        }
+            else {
+                $this->console_log("User Username doesn't exist");
+                return false;
+            }
+        }   
 
-        public function storeNewUser($email,$username,$password,$firstname,$surename,$userType){
+        public function storeNewUser($email, $username, $password, $firstname, $surename, $userType, $rePassword){
+            if(empty($firstname) || empty($surename) || empty($email) || empty($username) || empty($password) || empty($rePassword)){
+                $this->console_log("Feilds left empty!");
+                return false;
+            }
+
+            if((strpos($email, '@') || strpos($email, '.') || filter_var($email, FILTER_VALIDATE_EMAIL)) == false){
+                $this->console_log("Email invalid");
+                return false;
+            }
+
+            if(($password.length > 8) || (preg_match('/[\'^£$%&*()}{@#~?><>,|=_+¬-]/', $password)) == false){
+                $this->console_log("password invalid");
+                return false;
+            }
+
+            if($password != $rePassword){
+                $this->console_log("passwords don't match");
+                return false;
+            }
+
             $sqlCheckUser = $this->makeQuery($this->conn, "SELECT * FROM Accounts;");
             if ($sqlCheckUser != NULL) {
+
                 $userExists = false;
-                while($rows = mysqli_fetch_array($sqlCheckUser)) {
+                while($rows = mysqli_fetch_rows($sqlCheckUser)) {
                     if($username == $rows["username"]){
                         $userExists = true;
                     }
@@ -74,8 +90,7 @@
             else {
                 $this->console_log("SQLCheckerFailed!");
                 die("Error checking for useranme matches");
-            }
-
+            } 
             $sql =  "INSERT INTO Accounts (email,username,password,firstname,surename,userType) 
                     VALUES ('$email','$username', '$password', '$firstname', '$surename', '$userType');";
             $this->makeQuery($this->conn,$sql);
