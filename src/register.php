@@ -12,7 +12,7 @@
 
         $guestObj = new Guest;
         $RegResults = $guestObj->register($email, $username, $password, $firstname, $surename, $userType, $rePassword);
-       $
+
         echo $RegResults;
         if ($RegResults != 0) {
             include_once 'login.html';
