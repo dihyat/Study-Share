@@ -4,25 +4,40 @@ include 'RegisteredUser.php';
 session_start();
 console_log($_SESSION);
 $loginbtn;
+$uploadBtn;
 $registeredUserObj;
-if($_SESSION['logged_in'] == true){
-  $loginbtn = '<li style="float:right"><button class="btn" name="logout">Logout</button></li>';
-  $registeredUserObj = new RegisteredUser;
-  $registeredUserObj->setUserName($_SESSION['userName']);
-  $_SESSION['registeredUser'] = $registeredUserObj;
-}
-else{
-  $loginbtn = '<li style="float:right"><button class="btn" name="login">Login/SignUp</button></li>'; //if not logged in
-}
 
 if(isset($_POST['logout'])){
-  $_SESSION['logged_in'] = false;
-  $_SESSION['userName'] = false;
-  $_SESSION['registeredUser'] = false;
-  $loginbtn = '<li style="float:right"><button class="btn" name="login">Login/SignUp</button></li>';
+  session_unset();
+  session_destroy();
+  $loginbtn = '<button class="btn" name="login" id="loginbtn">logout</button>';
+  $uploadBtn = "<a></a>"; 
+  
+  $_POST['logout'] = false;
+  console_log("Loggin button selected");
 }
 
-if(isset($_POST['login'])){
+if(isset($_SESSION['loggedIn'])){ 
+  $loginbtn = '<button class="btn" name="logout" id="logoutbtn">Logout</button>';
+  $registeredUserObj = new RegisteredUser;
+  $registeredUserObj->setUserName($_SESSION['username']);
+  $_SESSION['registeredUser'] = $registeredUserObj;
+  $uploadBtn = "<a href=addpost.html>Upload Notes</a>"; 
+  console_log("Logged out button selected");
+
+include_once 'index.html';
+ echo "<script>
+    document.getElementById('loginbtn').remove;
+    document.getElementById('LoginButton').innerHTML='$loginbtn';
+    document.getElementById('Uploadbtn').innerHTML='$uploadBtn';
+  </script>";
+}
+else{
+  $loginbtn = '<button class="btn" name="login" id="loginbtn">logout</button>'; //if not logged in
+  $uploadBtn = "<a></a>"; 
+}
+
+if(isset($_POST['login']) && (isset($_SESSION['loggedIn'])==false)){
   header("location: login.php");
 }
 
@@ -31,41 +46,15 @@ function console_log( $data ){
   echo 'console.log('. json_encode( $data ) .')';
   echo '</script>';
 }
-
-echo '<!DOCTYPE html>
-<html class="no-js">
-  <!--<![endif]-->
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Study Share</title>
-    <meta name="description" content="" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link rel="stylesheet" href="./main.css" />
-  </head>
-
-  <body>
-  <form action="index.php" method="post">
-    <div class="navbar">
-      <ul>
-        <li id="logo">Study Share</li>
-        <li><a href="#home">Home</a></li>'; print($loginbtn); echo '
-      </ul>
-    </div>
-    </form>
-
-    <div class="ques">
-      <p class="">Select Education Level To Begin</p>
-    </div>
-
-    <div>
-      <a href="addpost.php"><button class="button" style="margin-left : 30%">A-Levels</button></a>
-      <a href="addpost.php"><button class="button" style="margin-left : 55%; padding-left: 45px; padding-right: 45px ">
-        GCSE
-      </button></a>
-    </div>
-
-    <script src="" async defer></script>
-  </body>
-</html>'
+  
+include_once 'index.html';
+/*
+if(isset($_SESSION['loggedIn'])){
+  echo "<script>
+    document.getElementById('loginbtn').remove;
+    document.getElementById('LoginButton').innerHTML='$loginbtn';
+    document.getElementById('Uploadbtn').innerHTML='$uploadBtn';
+  </script>";
+}
+*/
 ?>

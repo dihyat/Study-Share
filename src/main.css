@@ -66,10 +66,8 @@ body {
 
 /*Buttons*/
 .button {
-  position: absolute;
-  top: 50%;
+  width: 330px; 
   font-size: 70px;
-  display: inline-block;
   padding: 15px 25px;
 
   cursor: pointer;
@@ -98,14 +96,22 @@ body {
 
 /* CSS FOR LOGIN PAGE */
 
-
-  input[type=text], input[type=password] {
-    width: 80%;
+  .Dropdown {
+    width: 90%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
-    border: none;
     background: #f1f1f1;
+    border: none;
+  }
+
+  input[type=text], input[type=password] {
+    width: 90%;
+    padding: 15px;
+    margin: 5px 0 22px 0;
+    display: inline-block;
+    background: #f1f1f1;
+    border: none;
   }
   
   input[type=text]:focus, input[type=password]:focus {
@@ -183,6 +189,11 @@ span.psw {
 }
 
 .TextBoxPart{
-  height: 589px;
+  height: 290px;
 }
+
+#loginError, #RegisterError {
+  word-wrap: break-word;
+}
+
 
