@@ -18,7 +18,7 @@
     <div class="navbar">
       <ul>
         <li id="logo">Study Share</li>
-        <li><a href="./index.html">Home</a></li>
+        <li><a href="./index.php">Home</a></li>
       </ul>
     </div>
 
@@ -45,18 +45,18 @@
               
               <td valign="top">
                 <hr></hr>
-                <form action="http://localhost:8080/MySite/register.php" method ="post" style="border-right:1px solid #ccc;" class="formbody" >
+                <form action="http://localhost/Study_Share_v2/src/register.php" method ="post" style="border-right:1px solid #ccc;" class="formbody" >
                   <table>
                     <tr><td valign="top" class="TextBoxPart">
                       <p>
                         <label><b>Email</b></label>
                       </p>
-                      <input type="text" placeholder="Enter Email" name="email" required>
+                      <input type="text" placeholder="Enter Email" name="email" id="Regemail" required>
 
                       <p>
                         <label><b>User type</b></label>
                       </p>
-                      <select class="Dropdown" name="userType" placeholder="Student" required>
+                      <select class="Dropdown" name="userType" placeholder="Student" id="RegStudent" required>
                         <option value="Student">Student</option>
                         <option value="Teacher">Teacher</option>
                       </select>
@@ -64,27 +64,27 @@
                       <p>
                         <label><b>Username</b></label>
                       </p>
-                      <input type="text" placeholder="Enter username" name="username" required>
+                      <input type="text" placeholder="Enter username" name="username" id="Regusername"  required>
 
                       <p>
                           <label><b>Firstname</b></label>
                       </p>
-                      <input type="text" placeholder="Enter firstname" name="fname" required>
+                      <input type="text" placeholder="Enter firstname" name="fname" id="Regfname"  required>
 
                       <p>
-                          <label><b>Surname</b></label>
+                          <label><b>Surename</b></label>
                       </p>
-                      <input type="text" placeholder="Enter surname" name="sname" required>
+                      <input type="text" placeholder="Enter surename" name="sname" id="Regsname"  required>
                     
                       <p>
                         <label><b>Password</b></label>
                       </p>
-                      <input type="password" placeholder="Enter Password" name="psw" required>
+                      <input type="password" placeholder="Enter Password" name="psw" id="Regpsw" required>
                     
                       <p>
                         <label><b>Repeat Password</b></label>
                       </p>
-                      <input type="password" placeholder="Repeat Password" name="psw-repeat" required>
+                      <input type="password" placeholder="Repeat Password" name="psw-repeat" id="Regpsw-repeat" required>
                         
                     <br/><br/>
                     
@@ -93,6 +93,7 @@
 
                     <tr><td valign="bottom">
                       <input class="btn" type="submit" id="signupbtn" name="register" value="Register"/>
+                      <p id = "RegisterError"></p>
                     </td></tr>
 
                     </table>
@@ -101,25 +102,26 @@
 
               <td valign="top">
                 <hr></hr>
-                  <form action="http://localhost:8080/MySite/register.php" class="formbody"  method ="post">
+                  <form action="http://localhost/Study_Share_v2/src/login.php" class="formbody"  method ="post">
                     <table>
                       <tr><td valign="top" class="TextBoxPart" style="padding-left: 20px;">
                         <p>
                           <label><b>Username</b></label>
                         </p>
-                        <input type="text" placeholder="Enter Username" name="loginUsername" required>
+                        <input type="text" placeholder="Enter Username" name="loginUsername" id="loginUsername" required>
                         
                         <p>
                           <label><b>Password</b></label>
                         </p>
-                        <input type="loginPassword" placeholder="Enter Password" name="psw" required>
+                        <input type="Password" placeholder="Enter Password" name="loginPassword" id="loginPassword" required>
                         <span class="psw"> <a href="#">Forgot password?</a></span>
                         <br/>
                         <input type="checkbox" checked="checked" name="remember"> Remember me
                       </td></tr>
 
                     <tr><td valign="bottom">
-                      <input class="btn" type="submit" id="signupbtn" name="login" value="Login"/>
+                      <input class="btn" type="submit" id="Loginbtn" name="login" value="Login"/>
+                      <p id = "loginError"></p>
                     </td></tr>
                   </table>
 

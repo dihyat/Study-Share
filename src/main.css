@@ -66,10 +66,8 @@ body {
 
 /*Buttons*/
 .button {
-  position: absolute;
-  top: 50%;
+  width: 330px; 
   font-size: 70px;
-  display: inline-block;
   padding: 15px 25px;
 
   cursor: pointer;
@@ -99,21 +97,21 @@ body {
 /* CSS FOR LOGIN PAGE */
 
   .Dropdown {
-    width: 87%;
+    width: 90%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
-    border: none;
     background: #f1f1f1;
+    border: none;
   }
 
   input[type=text], input[type=password] {
-    width: 80%;
+    width: 90%;
     padding: 15px;
     margin: 5px 0 22px 0;
     display: inline-block;
-    border: none;
     background: #f1f1f1;
+    border: none;
   }
   
   input[type=text]:focus, input[type=password]:focus {
@@ -160,12 +158,6 @@ body {
   padding-bottom: 16px;
 }
 
-a{
-  text-decoration: none;
-  color: white;
-  text-align: center;
-}
-
 /* Form body */
 
 
@@ -200,75 +192,109 @@ span.psw {
   height: 290px;
 }
 
-
-/* css for a level page */
-.edutitle{
-  color: white;
-  background-image: -webkit-linear-gradient(135deg, #13547a, #80d0c7);
-  font-size: 50px;
-  margin-top: 10%;
-  border-radius: 10px;
-  width: 40%;
-  margin-left: 28%;
-  padding-top: 5px;
-  padding-bottom: 5px;
-  
+#loginError, #RegisterError {
+  word-wrap: break-word;
 }
 
-.edutitle p{
-  text-align: center;
+.UserPageDiv{
+  padding-top: 106px;
+  font-family: Arial, Helvetica, sans-serif;
 }
 
-.subBody{
-  background-image: -webkit-linear-gradient(135deg, #13547a, #13546a);
-  width:60%;
- 
-  margin-left: auto;
-  margin-right: auto;
-  font-size: 40px;
-  text-align: center;
-  border-radius: 10px; 
-
-  
+.UserTable{
+  background-color: rgba(255,255,255,0.96);
+  padding: 20px;
+  min-width: 500px;
+  width: 80%;
 }
 
+.UserInfo{
+  width: 500px;
+  font-size: 20px;
+}
 
-/* CSS FOR CARD */
+.UserInfo tr td {
+  padding: 10px;
+}
 
-.card {
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  transition: 0.3s;
-  width: 5%;
+.UserPostSection{
+
+}
+
+.PostGrid{
+  display: grid;
+  grid-template-columns: auto auto auto;
+  min-width: 500px;
+  width: 80%;
   border-radius: 5px;
-  background-image: -webkit-linear-gradient(135deg, #13547a, #80d0c7);
-  font-size: 40px;
-  padding: 0%;
+  background-color: rgba(255, 255, 255, 0.96);
+  border: 6px solid rgba(0, 0, 0, 0.1);
+}
+
+.grid-item {
+  background-color: rgba(255, 255, 255, 0.96);
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  font-size: 30px;
   text-align: center;
+  height: 100px;
+}
+
+.large-grid-item{
+  background-color: rgba(255, 255, 255, 0.96);
+  border: 6px solid rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  font-size: 30px;
+  text-align: center;
+}
+
+.large-td{
+  text-align: center;
+}
+
+.dropbtn {
+  background-color: #4CAF50;
   color: white;
+  padding: 10px;
+  border: none;
+}
+
+.dropdown {
+  text-align: left;
+  padding: 0px;
+  margin: 0px;
+  width: auto;
   position: relative;
-  
-  
-
+  display: inline-block;
 }
 
-.space{
-  border-spacing: 90px;
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
 }
 
-
-
-.card:hover {
-  box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
-  background-image: -webkit-linear-gradient(5deg, #591574, #db3907);
+.dropdown-content a {
+  color: black;
+  padding: 10px;
+  text-decoration: none;
+  display: block;
 }
 
-
-
-.cardcontainer {
-  text-align: center;
-  
-  padding-top: 5px;
-  padding-bottom: 5px;
+.dropdown-content a:hover {
+  background-color: #ddd;
 }
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.dropdown:hover .dropbtn {
+  background-color: #3e8e41;
+}
+
 
 

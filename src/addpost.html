@@ -16,6 +16,7 @@
             <ul>
               <li id="logo">Study Share</li>
               <li><a href="./index.html">Home</a></li>
+              <li style="float:right"><a style="padding:3px;" href="./UserPage.php"><img src="UserIcon.png" width="50" height="50"/></a></li>
             </ul>
         </div>
         <div class="FormDiv">
@@ -32,7 +33,7 @@
                 
                 <td valign="top">
                   <hr></hr>
-                  <form action="#" method ="post"  class="formbody" >
+                  <form action="addpost.php" method="POST"  class="formbody" enctype="multipart/form-data">
                     <table>
                       <tr><td valign="top" class="TextBoxPart">
                         <p>
@@ -44,7 +45,7 @@
                           <label><b>Education Level</b></label>
                         </p>
                         <select class="Dropdown" name="eduLevel" placeholder="A-Levels" required>
-                          <option value="A-Levels">A-Levels</option>
+                          <option value="A-Level">A-Levels</option>
                           <option value="GCSE">GCSE</option>
                         </select>
   
@@ -63,7 +64,7 @@
                         <input type="file" name="fileToUpload" id="fileToUpload">
   
                       <tr><td valign="bottom">
-                        <input class="btn" type="submit" id="signupbtn" name="submit" value="Submit"/>
+                        <input class="btn" type="submit" value="Submit"/>
                       </td></tr>
   
                       </table>
@@ -72,7 +73,6 @@
                 </tr>
                 </table>
                 </div>
-        
-        <script src="" async defer></script>
+
     </body>
 </html>
