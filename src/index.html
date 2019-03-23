@@ -1,6 +1,4 @@
-<!DOCTYPE html>
 <html class="no-js">
-  <!--<![endif]-->
   <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -11,24 +9,40 @@
   </head>
 
   <body>
-
+  <form action="index.php" method="post">
     <div class="navbar">
       <ul>
         <li id="logo">Study Share</li>
-        <li><a href="#home">Home</a></li>
-        <li style="float:right"><a href="./login.php">Login/SignUp</a></li>
+        <li><a href="./index.php">Home</a></li>  
+        <li id="UserPageIcon" style="float:right;"></a></li>
+        <li id="LoginButton" style="float:right"><button class="btn" name="login" id="loginbtn" style="width:250px;">Login/SignUp</button></li>
+        <li id="Uploadbtn" style="float:right"></li>
       </ul>
     </div>
+  </form>
 
     <div class="ques">
       <p class="">Select Education Level To Begin</p>
     </div>
 
     <div>
-      <button class="button" style="margin-left : 30%">A-Levels</button>
-      <button class="button" style="margin-left : 55%; padding-left: 45px; padding-right: 45px ">
-        GCSE
-      </button>
+      <center>
+        <table style="margin-top:200px;"> 
+          <tr>
+            <td style="padding-right:70px">
+              <button class="button">
+                <a href="./alevels.html">A-Levels</a>
+              </button>
+            </td>
+
+            <td style="padding-left:70px">
+              <button class="button">
+                <a href="./gcse.html">GCSE</a>
+              </button>
+            </td>
+          </tr>
+        </table>
+    </center>
     </div>
 
     <script src="" async defer></script>
