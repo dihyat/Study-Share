@@ -6,7 +6,7 @@ Software Engineering group project -> Creating a website for students to share/d
 PHP 5.0 and SQL
 
 ###Contributions:
-- Deniz Kandal
+- Deniz Kazdal
 - Md Mabrur Husan Dihyat
 - Rohman Rayhannur
 - Baver Naz
